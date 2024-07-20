@@ -1,15 +1,25 @@
 import time
 import threading
 import pyautogui
+import os
+import tkinter as tk
+import datetime
 
-print("v0.2")
-def set_click_time(hour, minute, second, millisecond):
+print("v0.3")
+
+def show_current_time(root, time_label):
+    current_time = datetime.datetime.now().strftime("%H:%M:%S.%f")[:-3]
+    time_label.config(text=current_time)
+    root.after(1, lambda: show_current_time(root, time_label))
+
+def set_click_time(hour, minute, second, millisecond, time_label):
     # the delay until the next click
-    now = time.time()
-    target_time = time.mktime((time.localtime().tm_year, time.localtime().tm_mon, time.localtime().tm_mday, hour, minute, second, 0, 0, 0)) + millisecond / 1000
-    delay = target_time - now
-    if delay < 0:
-        delay += 24 * 3600
+    now = datetime.datetime.now()
+    target_time = now.replace(hour=hour, minute=minute, second=second, microsecond=millisecond * 1000)
+    if target_time < now:
+        target_time += datetime.timedelta(days=1)
+
+    delay = (target_time - now).total_seconds()
 
     # wait for the delay
     time.sleep(delay)
@@ -19,22 +29,45 @@ def set_click_time(hour, minute, second, millisecond):
     print("success")
 
 def main():
-    hour = int(input("Enter the hour for the click (0-23): "))
-    minute = int(input("Enter the minute for the click (0-59): "))
-    second = int(input("Enter the second for the click (0-59): "))
-    millisecond = int(input("Enter the millisecond for the click (0-999): "))
+    root = tk.Tk()
+    root.title("Real-time Clock")
+    time_label = tk.Label(root, font=("Helvetica", 24), fg="red")
+    time_label.pack()
 
-    # Create a thread to handle the click
-    click_thread = threading.Thread(target=set_click_time, args=(hour, minute, second, millisecond))
-    click_thread.daemon = True
-    click_thread.start()
+    input_frame = tk.Frame(root)
+    input_frame.pack()
 
-    # Wait for the click thread to finish
-    click_thread.join()
+    tk.Label(input_frame, text="Hour (0-23):").pack(side=tk.LEFT)
+    hour_entry = tk.Entry(input_frame, width=5)
+    hour_entry.pack(side=tk.LEFT)
 
-    # Start over again
-    print("Restarting...")
-    main()
+    tk.Label(input_frame, text="Minute (0-59):").pack(side=tk.LEFT)
+    minute_entry = tk.Entry(input_frame, width=5)
+    minute_entry.pack(side=tk.LEFT)
+
+    tk.Label(input_frame, text="Second (0-59):").pack(side=tk.LEFT)
+    second_entry = tk.Entry(input_frame, width=5)
+    second_entry.pack(side=tk.LEFT)
+
+    tk.Label(input_frame, text="Millisecond (0-999):").pack(side=tk.LEFT)
+    millisecond_entry = tk.Entry(input_frame, width=5)
+    millisecond_entry.pack(side=tk.LEFT)
+
+    def start_click():
+        hour = int(hour_entry.get())
+        minute = int(minute_entry.get())
+        second = int(second_entry.get())
+        millisecond = int(millisecond_entry.get())
+
+        # Create a thread to handle the click
+        click_thread = threading.Thread(target=set_click_time, args=(hour, minute, second, millisecond, time_label))
+        click_thread.daemon = True
+        click_thread.start()
+
+    tk.Button(input_frame, text="Start", command=start_click).pack(side=tk.LEFT)
+
+    show_current_time(root, time_label)
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
