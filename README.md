@@ -20,3 +20,6 @@ Allows the application window to be toggled between staying on top of other wind
 2. **Start Button**: Initiates the countdown timer based on the provided input.
    
 3. **Stay on Top Button**: Toggles whether the application window stays on top of other windows.
+
+## Note:
+I created this for use with [Wuwa Echomancing](https://docs.google.com/spreadsheets/d/1Wixi5VK2EGO1oqbiFDkhRPCYjnhMTRrUPV3ZmynaAaI/htmlview?gid=413394713&pru=AAABkNSZMCA*fgSqdA_NmFh7-pg_dSjcIw#) to precisely time the mouse click.
