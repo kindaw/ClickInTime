@@ -1,4 +1,4 @@
-#v1.4
+#v1.5
 import tkinter as tk
 from tkinter import messagebox
 import threading
@@ -54,6 +54,18 @@ def toggle_stay_on_top(root, stay_on_top_button):
         root.attributes("-topmost", True)
         stay_on_top_button.config(text="Toggle Not on Top")
 
+# Function to add current time to input boxes
+def add_current_time(hour_entry, minute_entry, second_entry, millisecond_entry):
+    current_time = datetime.datetime.now()
+    hour_entry.delete(0, tk.END)
+    hour_entry.insert(0, str(current_time.hour))
+    minute_entry.delete(0, tk.END)
+    minute_entry.insert(0, str(current_time.minute))
+    second_entry.delete(0, tk.END)
+    second_entry.insert(0, str(current_time.second))
+    millisecond_entry.delete(0, tk.END)
+    millisecond_entry.insert(0, str(current_time.microsecond // 1000))
+
 def main():
     global root  # Declare root as global to access it in toggle_stay_on_top
     root = tk.Tk()
@@ -81,6 +93,9 @@ def main():
     tk.Label(frame, text="Millisecond:").pack(side=tk.LEFT)
     millisecond_entry = tk.Entry(frame, width=5)
     millisecond_entry.pack(side=tk.LEFT)
+
+    add_time_button = tk.Button(frame, text="Add Current Time", command=lambda: add_current_time(hour_entry, minute_entry, second_entry, millisecond_entry))
+    add_time_button.pack(side=tk.LEFT)
 
     time_left_label = tk.Label(root, font=('Helvetica', 18), fg='blue')
     time_left_label.pack()
