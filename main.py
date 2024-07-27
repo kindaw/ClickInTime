@@ -1,10 +1,9 @@
+#v1.2
 import tkinter as tk
 from tkinter import messagebox
 import threading
 import pyautogui
 import datetime
-
-print("V1.1")
 
 # Function to update the current time label every millisecond
 def show_current_time(time_label):
