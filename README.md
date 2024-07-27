@@ -15,11 +15,15 @@ Allows the application window to be toggled between staying on top of other wind
 - **pyautogui**: For performing mouse click actions.
 
 ## How to Use:
-1. **Input Fields**: Enter the desired hour, minute, second, and millisecond in the respective entry fields.
-   
-2. **Start Button**: Initiates the countdown timer based on the provided input.
-   
-3. **Stay on Top Button**: Toggles whether the application window stays on top of other windows.
+1. **Install Python**: Download and install Python from the official website: [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+2. **Run the Program**: Click on `run.bat` to run the program. If the program that is going to be clicked has higher permission, run `run.bat` as administrator.
+
+3. **Input Fields**: Enter the desired hour, minute, second, and millisecond in the respective entry fields.
+
+4. **Start Button**: Initiates the countdown timer based on the provided input.
+
+5. **Stay on Top Button**: Toggles whether the application window stays on top of other windows.
 
 ## Note:
 I created this for use with [Wuwa Echomancing](https://docs.google.com/spreadsheets/d/1Wixi5VK2EGO1oqbiFDkhRPCYjnhMTRrUPV3ZmynaAaI/htmlview?gid=413394713&pru=AAABkNSZMCA*fgSqdA_NmFh7-pg_dSjcIw#) to precisely time the mouse click.
