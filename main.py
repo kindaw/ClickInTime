@@ -1,4 +1,4 @@
-#v1.2
+#v1.3
 import tkinter as tk
 from tkinter import messagebox
 import threading
