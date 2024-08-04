@@ -1,4 +1,4 @@
-#[Here is a new version that is more precise and has reduced latency.](https://github.com/kindaw/TimedClick)
+##[Here is a new version that is more precise and has reduced latency.](https://github.com/kindaw/TimedClick)
 
 ## [Program](https://github.com/kindaw/ClickInTime/archive/refs/heads/main.zip) Features:
 
