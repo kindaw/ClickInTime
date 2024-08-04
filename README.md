@@ -1,4 +1,4 @@
-# [Here is a new version that is more precise and has reduced latency.](https://github.com/kindaw/TimedClick)
+# [Here is a new version that is more precise and has reduced latency. Click Here.](https://github.com/kindaw/TimedClick)
 
 ## [Program](https://github.com/kindaw/ClickInTime/archive/refs/heads/main.zip) Features:
 
@@ -15,6 +15,10 @@ Allows the application window to be toggled between staying on top of other wind
 - **tkinter**: For creating the GUI.
 - **datetime**: For handling dates and times.
 - **pyautogui**: For performing mouse click actions.
+
+## Download
+
+You can download the file here: [Click me](https://github.com/kindaw/ClickInTime/archive/refs/heads/main.zip).
 
 ## How to Use:
 1. **Install Python**: Download and install Python from the official website: [https://www.python.org/downloads/](https://www.python.org/downloads/)
